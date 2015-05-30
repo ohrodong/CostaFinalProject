@@ -1,0 +1,106 @@
+alter table Concert add constraint concertId primary key(concertId)
+
+create  table Concert(
+VARCHAR2	concertId not null,
+VARCHAR2	concertName not null,
+SYSDATE	concertStartDate not null,
+SYSDATE	concertEndDate not null,
+VARCHAR2	concertFirstGenre not null,
+VARCHAR2	concertIsForeign not null,
+VARCHAR2	concertHall not null,
+VARCHAR2	concertArea not null,
+VARCHAR2	concertWebSite not null,
+VARCHAR2	concertViewAge not null,
+VARCHAR2	concertRunningTime not null,
+VARCHAR2	concertNotice not null,
+VARCHAR2	concertCompany not null,
+VARCHAR2	concertActors not null,
+SYSDATE	concertWriteTime not null,
+SYSDATE	concertUpdateTime not null,
+VARCHAR2	concertAverageRating not null,
+VARCHAR2	concertHits not null
+)
+
+alter table ConcertImagePath add constraint concertImagePathNo  primary key(concertImagePathNo)
+
+create  table ConcertImagePath(
+NUBMBER	concertImagePathNo not null,
+VARCHAR2	concertId not null,
+VARCHAR2	concertImagePath not null,
+)
+
+alter table concertSecondPath add constraint concertSecondGenreNo  primary key(concertSecondGenreNo)
+
+create  table concertSecondPath(
+NUBMBER	concertSecondGenreNo
+VARCHAR2	concertId
+VARCHAR2	concertSecondGenre
+)
+
+alter table merber add constraint memberId  primary key(memberId)
+
+create  table merber(
+VARCHAR2	memberId
+VARCHAR2	memberPw
+VARCHAR2	memberAddr
+VARCHAR2	memberTelNum
+VARCHAR2	memberCompanyNum
+NUMBER	memberAuthority
+VARCHAR2	memberArea
+VARCHAR2	memberGender
+NUMBER	memberBirthYear
+SYSDATE	memberAddDate
+SYSDATE	memberUpdateDate
+)
+
+alter table Bookmart add constraint noteNo  primary key(noteNo)
+fk
+create  table Bookmart(
+VARCHAR2	concertId
+VARCHAR2	memberId
+)
+
+alter table Comment add constraint noteNo  primary key(noteNo)
+fk
+create  table Comment(
+VARCHAR2	concertId
+VARCHAR2	memberId
+VARCHAR2	commentContent
+SYSDATE	commentWriteTime
+SYSDATE	commentUpdateTime
+NUMBER	commentLike
+NUMBER	commentRating
+
+)
+
+alter table Note add constraint noteNo  primary key(noteNo)
+fk
+create  table Note(
+NUMBER	noteNo
+VARCHAR2	memberId
+VARCHAR2	noteTitle
+VARCHAR2	noteContent
+SYSDATE	noteWriteTime
+)
+
+alter table Notice add constraint noticeNo  primary key(noticeNo)
+fk
+create  table Notice(
+NUMBER	noticeNo
+VARCHAR2	noticeTitle
+VARCHAR2	noticeContent
+SYSDATE	noticeWriteTime
+SYSDATE	noticeUpdateTime
+VARCHAR2	memberId
+)
+
+alter table Faqna add constraint noticeNo  primary key(noticeNo)
+fk
+
+create  table Faqna(
+VARCHAR2	faqnaContent
+VARCHAR2	faqnaCategory
+SYSDATE	faqnaWriteTime
+SYSDATE	faqnaUpdateTime
+VARCHAR2	memberId
+)
