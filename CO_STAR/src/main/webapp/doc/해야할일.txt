@@ -1,0 +1,23 @@
+이클립스와
+아파치 설치
+아파치 포트 변경
+서버 연결
+그리고 이클립스 utf-8 설정
+sts 플러그인 설치
+프로젝트 생성
+
+생성후 라이브러리 추가
+
+
+기트 경로
+https://github.com/ohrodong/CostaFinalProject.git
+
+각 조원 기트 이름명
+정규선 sundicide
+김지수 jisukimgit
+박지혜 parkjh6567
+
+
+/해야할거
+
+뷰화면 50 번 수정 해야함
