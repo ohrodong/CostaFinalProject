@@ -6,9 +6,9 @@
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
-	<typeAliases>
-		<typeAlias type="ibatis.services.domain.User" alias="user" />
-	</typeAliases>
+<!-- 	<typeAliases> -->
+<!-- 		<typeAlias type="ibatis.services.domain.User" alias="user" /> -->
+<!-- 	</typeAliases> -->
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC">
@@ -24,7 +24,7 @@
 	<mappers>
 		<mapper resource="sql/mybatis-userservice-mapping.xml" />
 		<!-- 나중에 여기에 여러개의 매퍼들을 등록 할 수 있다. 일종의 와이어링이다. -->
-		<mapper resource="sql/mybatis-userservice-mapping01.xml" />
+<!-- 		<mapper resource="sql/mybatis-userservice-mapping01.xml" /> -->
 	</mappers>
 
 

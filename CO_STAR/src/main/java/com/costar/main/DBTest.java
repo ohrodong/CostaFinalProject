@@ -21,8 +21,8 @@ public class DBTest {
 					.build(reader);
 			SqlSession session = factory.openSession();
 		 
-//			session.
-
+			List listWordListResult = session.selectList("test.total");
+			System.out.println(listWordListResult);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

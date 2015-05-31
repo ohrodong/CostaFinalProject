@@ -7,6 +7,7 @@
 	의 외부로 분리함) - SQL문의 입력(?) / 출력(?)을 매핑한다. <== 아래의 select element 참조 -->
 
 <!-- SQL definition -->
-<mapper namespace="">
+<mapper namespace="test">
+    <select id="total">select * from Concert</select>
 
 </mapper>
