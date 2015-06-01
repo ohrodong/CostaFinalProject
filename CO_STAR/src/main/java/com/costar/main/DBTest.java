@@ -20,6 +20,11 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
   */
 public class DBTest {
 	public static void main(String[] args) throws Exception{
+		int temp_int=0, temp_int2=0, temp_int3=0;
+		String temp_string="",temp_string2="",temp_string3="";
+		ConcertVO temp_concertVO = null;
+		ArrayList<ConcertVO> temp_concertVO_list = null;
+		
 		
 		Reader reader=Resources.getResourceAsReader("config/SqlMapConfig.xml");
 
@@ -83,42 +88,123 @@ public class DBTest {
 				120,//int concertHits; 
 				memberVO//MemberVO memberVO;
 				);
-//		int result = session.insert("Member.add",memberVO);
-//		int result2 = session.insert("Concert.add",concertVO);
-//		int result3 = session.insert("Concert.add",concertVO2);
-//		System.out.println("Member add의 결과는 == " + result);
-//		System.out.println("Concert add의 결과는 == " + result2);
-//		System.out.println("Concert add의 결과는 == " + result3);
+
+		/////////////////////////////////////C O M M I T//////////////////////////////////////////
+		//session.commit();
+		//////////////////////////////////////////////////////////////////////////////////////////////		
 		
-		session.commit();
+
+		/////////////////////////////////////I N S E R T ///////////////////////////////////////////
+		/*
+		temp_int = session.insert("Member.addConcert",memberVO);
+		temp_int2 = session.insert("Concert.addConcert",concertVO);
+		temp_int3 = session.insert("Concert.addConcert",concertVO2);
+		System.out.println("Member add의 결과는 == " + temp_int);
+		System.out.println("Concert add의 결과는 == " + temp_int2);
+		System.out.println("Concert add의 결과는 == " + temp_int3);
+		
+		*/
+		//////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		/////////////////////////////////////U P D A T E ///////////////////////////////////////////
+		/*
+		ConcertVO update_vo1 = concertVO;
+		update_vo1.setConcertId("0003");
+		temp_int = session.insert("Concert.addConcert",update_vo1);
+		temp_concertVO =  session.selectOne("Concert.selectByConcertId","0003");
+		System.out.println("업데이트 전 지역구 = " + temp_concertVO.getConcertArea());
+		
+		update_vo1.setConcertArea("영등포구");
+		temp_int = session.update("Concert.updateConcert",update_vo1);
+		System.out.println("update_vo1 Update 결과 = " + temp_int);
+		temp_concertVO =  session.selectOne("Concert.selectByConcertId","0003");
+		System.out.println("업데이트 후 지역구 = " + temp_concertVO.getConcertArea());
+		*/
+		//////////////////////////////////////////////////////////////////////////////////////////////
+		
+
+		
+		/////////////////////////////////////D E L E T E ///////////////////////////////////////////
+		/*
+		ConcertVO delete_vo1 = concertVO;
+		delete_vo1.setConcertId("0003");
+		temp_string = "0003";
+		temp_int = session.insert("Concert.addConcert",delete_vo1);
+		System.out.println("ID=" + temp_string + " 삽입 결과 = " + temp_int);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.selectAll");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println(temp_concertVO_list.get(i).getConcertId());
+		}
+		
+		temp_int = session.delete("Concert.deleteConcert","0003");
+		System.out.println("\n");
+		System.out.println("삭제 결과 = " + temp_int);
+		
+		temp_concertVO =  session.selectOne("Concert.selectByConcertId","0003");
+		if(temp_concertVO != null){
+			System.out.println(temp_concertVO.getConcertId() + " 삭제 실패");
+		} else{
+			System.out.println("ID=" + temp_string + " 삭제 성공!");
+			temp_concertVO_list = (ArrayList)session.selectList("Concert.selectAll");
+			for (int i = 0; i < temp_concertVO_list.size(); i++) {
+				System.out.println(temp_concertVO_list.get(i).getConcertId());
+			}
+		}
+		*/
+		//////////////////////////////////////////////////////////////////////////////////////////////		
+		
+		
+		
 		ArrayList<MemberVO> list = (ArrayList)session.selectList("Member.selectAll");
 		ArrayList<ConcertVO> list2 = (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("========================================");
 		System.out.println("++Member.selectAll++");
+		System.out.println("========================================");
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
+		System.out.println("\n\n");
+		
+		
 		System.out.println("========================================");
 		System.out.println("++Concert.selectAll++");
+		System.out.println("========================================");
 		for (int i = 0; i < list2.size(); i++) {
 			System.out.println(list2.get(i));
 		}
-		System.out.println("========================================");
-
+		System.out.println("\n\n");
+		
 		
 		list2 = (ArrayList)session.selectList("Concert.searchByConcertName","텀");
 		System.out.println("++Concert.searchByConcertName++");
 		for (int i = 0; i < list2.size(); i++) {
 			System.out.println(list2.get(i));
 		}
+		System.out.println("\n\n");
 		
 		
 		System.out.println("========================================");
 		System.out.println("++Concert.searchByMonth++");
+		System.out.println("========================================");
 		list2 = (ArrayList)session.selectList("Concert.searchByMonth",4);
 		//list2 = (ArrayList)session.selectList("Concert.searchByMonth",6);
 		for (int i = 0; i < list2.size(); i++) {
 			System.out.println(list2.get(i));
 		}
+		System.out.println("\n\n");
+		
+		
+		System.out.println("========================================");
+		System.out.println("++Concert.searchByConcertAreaInIndexPage++");
+		System.out.println("========================================");
+		list2 = (ArrayList)session.selectList("Concert.searchByConcertAreaInIndexPage","등포");
+		for (int i = 0; i < list2.size(); i++) {
+			System.out.println(list2.get(i));
+		}
+		System.out.println("\n\n");
+		
+		
 		
 		
 		

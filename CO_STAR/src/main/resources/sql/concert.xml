@@ -13,7 +13,7 @@
 	</resultMap>
 -->	 
 
-	<insert id="add" parameterType="concertVO">
+	<insert id="addConcert" parameterType="concertVO">
 		INSERT INTO Concert VALUES
 		(
 				#{concertId},
@@ -37,11 +37,50 @@
 		)
 	</insert>
 	
+	<update id="updateConcert" parameterType="concertVO" >
+		UPDATE Concert SET
+			concertName=#{concertName},
+			concertStartDate=TO_DATE(#{concertStartDate},'YYYY-MM-DD'),
+			concertEndDate=TO_DATE(#{concertEndDate},'YYYY-MM-DD'),
+			concertFirstGenre=#{concertFirstGenre},
+			concertHall=#{concertHall},
+			concertArea=#{concertArea},
+			concertWebSite=#{concertWebSite},
+			concertViewAge=#{concertViewAge},
+			concertRunningTime=#{concertRunningTime},
+			concertNotice=#{concertNotice},
+			concertCompany=#{concertCompany},
+			concertActors=#{concertActors},
+			
+			concertUpdateTime=sysdate,
+			concertAverageRating=#{concertAverageRating},
+			concertHits=#{concertHits},
+			memberId=#{memberVO.memberId}
+		WHERE concertId=#{concertId}
+	</update>
+	
+	<delete id="deleteConcert" parameterType="string">
+		DELETE FROM Concert WHERE concertId=#{concertId} 
+	</delete>
+	
+	
+	
 	
 	<sql id="select-concert">
 		SELECT * FROM
 	</sql>
 	
+	<sql id="whereorder-concert">
+		WHERE sysdate BETWEEN  concertStartDate AND concertEndDate
+		ORDER BY concertEndDate
+	</sql>
+	
+	
+	<select id="selectByConcertId" parameterType="string" resultType="concertVO">
+		<include refid="select-concert"/>
+		Concert
+		WHERE concertId = #{value}
+	</select>
 	
 	<select id="selectAll" resultType="concertVO">
 			<include refid="select-concert"/>
@@ -51,8 +90,7 @@
 	<select id="searchByConcertName" parameterType="string" resultType="concertVO">
 		<include refid="select-concert"/>
 		(<include refid="select-concert"/> Concert WHERE concertName LIKE '%'||#{value}||'%')
-		WHERE sysdate BETWEEN  concertStartDate AND concertEndDate
-		ORDER BY concertEndDate
+		<include refid="whereorder-concert"/>
 	</select>
 
 	<select id="searchByMonth" parameterType="int" resultType="concertVO">
@@ -63,18 +101,15 @@
 			TO_NUMBER(TO_CHAR(concertStartDate,'MM')) <= #{value}
 			AND TO_NUMBER(TO_CHAR(concertEndDate,'MM')) >= #{value})
 		]]>
-		
-			WHERE sysdate BETWEEN  concertStartDate AND concertEndDate
-			ORDER BY concertEndDate
+			<include refid="whereorder-concert"/>
 			
 	</select>
 	 
 	
 	<select id="searchByConcertAreaInIndexPage" parameterType="string" resultType="concertVO">
 		<include refid="select-concert"/>
-		(<include refid="select-concert"/> Concert WHERE concertName LIKE '%'||#{value}||'%')
-		WHERE sysdate BETWEEN  concertStartDate AND concertEndDate
-		ORDER BY concertEndDate
+		(<include refid="select-concert"/> Concert WHERE concertArea LIKE '%'||#{value}||'%')
+		<include refid="whereorder-concert"/>
 	</select>
 	
 </mapper>
