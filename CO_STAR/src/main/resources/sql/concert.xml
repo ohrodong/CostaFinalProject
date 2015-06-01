@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Concert">
+
+<!-- 
+	<resultMap type="mem" id="memberMap">
+		<result property="id" column="id" jdbcType="VARCHAR" />
+		<result property="password" column="password" jdbcType="VARCHAR" />
+		<result property="name" column="name" jdbcType="VARCHAR" />
+		<result property="address" column="address" jdbcType="VARCHAR" />
+	</resultMap>
+-->	 
+
+	<insert id="add" parameterType="concertVO">
+		INSERT INTO Concert VALUES
+		(
+				#{concertId},
+				#{concertName},
+				TO_DATE(#{concertStartDate},'YYYY-MM-DD'),
+				TO_DATE(#{concertEndDate},'YYYY-MM-DD'),
+				#{concertFirstGenre},
+				#{concertHall},
+				#{concertArea},
+				#{concertWebSite},
+				#{concertViewAge},
+				#{	concertRunningTime},
+				#{concertNotice},
+				#{concertCompany},
+				#{concertActors},
+				sysdate,
+				#{concertUpdateTime},
+				#{concertAverageRating},
+				#{concertHits},
+				#{memberVO.memberId}
+		)
+	</insert>
+	
+	
+	<sql id="select-concert">
+		SELECT * FROM
+	</sql>
+	
+	
+	<select id="selectAll" resultType="concertVO">
+			<include refid="select-concert"/>
+			Concert
+	</select>
+	
+	<select id="searchByConcertName" parameterType="string" resultType="concertVO">
+		<include refid="select-concert"/>
+		(<include refid="select-concert"/> Concert WHERE concertName LIKE '%'||#{value}||'%')
+		WHERE sysdate BETWEEN  concertStartDate AND concertEndDate
+		ORDER BY concertEndDate
+	</select>
+
+	<select id="searchByMonth" parameterType="int" resultType="concertVO">
+			<include refid="select-concert"/> 
+			(<include refid="select-concert"/> Concert WHERE 
+		
+		<![CDATA[ 
+			TO_NUMBER(TO_CHAR(concertStartDate,'MM')) <= #{value}
+			AND TO_NUMBER(TO_CHAR(concertEndDate,'MM')) >= #{value})
+		]]>
+		
+			WHERE sysdate BETWEEN  concertStartDate AND concertEndDate
+			ORDER BY concertEndDate
+			
+	</select>
+	 
+	
+	<select id="searchByConcertAreaInIndexPage" parameterType="string" resultType="concertVO">
+		<include refid="select-concert"/>
+		(<include refid="select-concert"/> Concert WHERE concertName LIKE '%'||#{value}||'%')
+		WHERE sysdate BETWEEN  concertStartDate AND concertEndDate
+		ORDER BY concertEndDate
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

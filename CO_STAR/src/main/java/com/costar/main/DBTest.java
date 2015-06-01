@@ -21,7 +21,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class DBTest {
 	public static void main(String[] args) throws Exception{
 		
-		Reader reader=Resources.getResourceAsReader("sql/SqlMapConfig.xml");
+		Reader reader=Resources.getResourceAsReader("config/SqlMapConfig.xml");
 
 		SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(reader);
 		
