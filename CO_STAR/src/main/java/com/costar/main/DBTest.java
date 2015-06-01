@@ -9,10 +9,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.costar.main.vo.ConcertVO;
+
 public class DBTest {
 
 	public static void main(String[] args) {
-		// commit¸¦ ÇØ¾ß µğºñ¿¡ ¹İ¿µµÊ
+		// commitë¥¼ í•´ì•¼ ë””ë¹„ì— ë°˜ì˜ë¨
 		try {
 			Reader reader = Resources
 					.getResourceAsReader("config/SqlMapConfig.xml");
@@ -20,8 +22,9 @@ public class DBTest {
 			SqlSessionFactory factory = new SqlSessionFactoryBuilder()
 					.build(reader);
 			SqlSession session = factory.openSession();
-		 
-			List listWordListResult = session.selectList("test.total");
+
+			List<ConcertVO> listWordListResult = session
+					.selectList("test.total");
 			System.out.println(listWordListResult);
 
 		} catch (IOException e) {

@@ -8,6 +8,6 @@
 
 <!-- SQL definition -->
 <mapper namespace="test">
-    <select id="total">select * from Concert</select>
+	<select id="total" resultType="concertVO">select * from Concert</select>
 
 </mapper>
