@@ -106,11 +106,48 @@
 	</select>
 	 
 	
-	<select id="searchByConcertAreaInIndexPage" parameterType="string" resultType="concertVO">
+	<select id="searchByConcertArea" parameterType="string" resultType="concertVO">
 		<include refid="select-concert"/>
 		(<include refid="select-concert"/> Concert WHERE concertArea LIKE '%'||#{value}||'%')
 		<include refid="whereorder-concert"/>
 	</select>
+	
+	<select id="searchByConcertFirstGenre" parameterType="string" resultType="concertVO">
+	<include refid="select-concert"/>
+		(<include refid="select-concert"/> Concert WHERE concertFirstGenre LIKE '%'||#{value}||'%')
+		<include refid="whereorder-concert"/>
+	</select>
+	
+	<select id="searchByConcertActor" parameterType="string" resultType="concertVO">
+	<include refid="select-concert"/>
+		(<include refid="select-concert"/> Concert WHERE concertActors LIKE '%'||#{value}||'%')
+		<include refid="whereorder-concert"/>
+	</select>
+	
+	<select id="searchByConcertCompany" parameterType="string" resultType="concertVO">
+	<include refid="select-concert"/>
+		(<include refid="select-concert"/> Concert WHERE concertCompany LIKE UPPER('%'||#{value}||'%'))
+		<include refid="whereorder-concert"/>
+	</select>
+	<!-- UPPER를 적용해 대소문자 관계 없이 검색하게 하였다 -->
+	
+	<select id="searchByConcertHall" parameterType="string" resultType="concertVO">
+	<include refid="select-concert"/>
+		(<include refid="select-concert"/> Concert WHERE concertHall LIKE '%'||#{value}||'%')
+		<include refid="whereorder-concert"/>
+	</select>
+	
+	
+	<select id="recommendByConcertAverageRating" parameterType="string" resultType="concertVO">
+	<include refid="select-concert"/>
+		(<include refid="select-concert"/> Concert <include refid="whereorder-concert"/>) 
+		ORDER BY concertAverageRating
+		
+	</select>
+	
+	
+	
+	
 	
 </mapper>
 

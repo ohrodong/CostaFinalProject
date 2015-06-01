@@ -63,7 +63,7 @@ public class DBTest {
 				"한예슬", //String concertActors;
 				"",//String concertWriteTime;//Date 
 				"",//String concertUpdateTime;//Date 
-				"30",//String concertAverageRating; 
+				"7",//String concertAverageRating; 
 				120,//int concertHits; 
 				memberVO//MemberVO memberVO;
 				);
@@ -73,18 +73,18 @@ public class DBTest {
 				"22유텀령22", //String concertName;
 				"20150531",//String concertStartDate;//Date 
 				"2015-09-10",//String concertEndDate;//Date
-				"뮤지컬",//String concertFirstGenre; 
-				"세종문화회관", //String concertHall;
+				"공연",//String concertFirstGenre; 
+				"대학로", //String concertHall;
 				"강북구",//String concertArea;
 				"www.naver.com", //String concertWebSite;
 				"20세이상",//String concertViewAge; 
 				"120분",//String concertRunningTime; 
 				"공지사항",//String concertNotice;
-				"CJEntertainment",//String concertCompany; 
-				"한예슬", //String concertActors;
+				"JYP",//String concertCompany; 
+				"설경구", //String concertActors;
 				"",//String concertWriteTime;//Date 
 				"",//String concertUpdateTime;//Date 
-				"30",//String concertAverageRating; 
+				"9",//String concertAverageRating; 
 				120,//int concertHits; 
 				memberVO//MemberVO memberVO;
 				);
@@ -122,8 +122,11 @@ public class DBTest {
 		System.out.println("업데이트 후 지역구 = " + temp_concertVO.getConcertArea());
 		*/
 		//////////////////////////////////////////////////////////////////////////////////////////////
+//		concertVO.setConcertAverageRating("7");
+//		session.update("Concert.updateConcert",concertVO2);
+//		session.commit();
 		
-
+		
 		
 		/////////////////////////////////////D E L E T E ///////////////////////////////////////////
 		/*
@@ -155,18 +158,20 @@ public class DBTest {
 		//////////////////////////////////////////////////////////////////////////////////////////////		
 		
 		
-		
+		/*
 		ArrayList<MemberVO> list = (ArrayList)session.selectList("Member.selectAll");
 		ArrayList<ConcertVO> list2 = (ArrayList)session.selectList("Concert.selectAll");
+		 */
 		System.out.println("========================================");
 		System.out.println("++Member.selectAll++");
 		System.out.println("========================================");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.selectAll");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println(temp_concertVO_list.get(i));
 		}
 		System.out.println("\n\n");
 		
-		
+		/*
 		System.out.println("========================================");
 		System.out.println("++Concert.selectAll++");
 		System.out.println("========================================");
@@ -174,40 +179,179 @@ public class DBTest {
 			System.out.println(list2.get(i));
 		}
 		System.out.println("\n\n");
+		*/
 		
 		
-		list2 = (ArrayList)session.selectList("Concert.searchByConcertName","텀");
+		/*
+		System.out.println("========================================");
 		System.out.println("++Concert.searchByConcertName++");
-		for (int i = 0; i < list2.size(); i++) {
-			System.out.println(list2.get(i));
+		System.out.println("========================================");
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()
+					+"\t콘서트명 = "+temp_concertVO_list.get(i).getConcertName()	);
+		}
+		
+		temp_string = "텀";
+		System.out.println("\n검색결과:: " + temp_string);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.searchByConcertName",temp_string);
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()
+					+"\t콘서트명 = "+temp_concertVO_list.get(i).getConcertName()	);
 		}
 		System.out.println("\n\n");
+		*/
 		
 		
+		/*
 		System.out.println("========================================");
 		System.out.println("++Concert.searchByMonth++");
 		System.out.println("========================================");
-		list2 = (ArrayList)session.selectList("Concert.searchByMonth",4);
-		//list2 = (ArrayList)session.selectList("Concert.searchByMonth",6);
-		for (int i = 0; i < list2.size(); i++) {
-			System.out.println(list2.get(i));
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()
+					+"\t시작일 = "+temp_concertVO_list.get(i).getConcertStartDate()
+					+"\t종료일 = "+temp_concertVO_list.get(i).getConcertEndDate());
+		}
+		
+		temp_int = 5;
+		temp_int2 = 1;
+		System.out.println("\n검색결과:: " + temp_int);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.searchByMonth",temp_int);
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()
+					+"\t시작일 = "+temp_concertVO_list.get(i).getConcertStartDate()
+					+"\t종료일 = "+temp_concertVO_list.get(i).getConcertEndDate());
 		}
 		System.out.println("\n\n");
+		*/
 		
 		
+		
+		/*
 		System.out.println("========================================");
-		System.out.println("++Concert.searchByConcertAreaInIndexPage++");
+		System.out.println("++Concert.searchByConcertArea++");
 		System.out.println("========================================");
-		list2 = (ArrayList)session.selectList("Concert.searchByConcertAreaInIndexPage","등포");
-		for (int i = 0; i < list2.size(); i++) {
-			System.out.println(list2.get(i));
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t지역구 = "+temp_concertVO_list.get(i).getConcertArea());
+		}
+		
+		temp_string = "강북";
+		System.out.println("\n검색결과:: " + temp_string);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.searchByConcertArea",temp_string);
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t지역구 = "+temp_concertVO_list.get(i).getConcertArea());
 		}
 		System.out.println("\n\n");
+		*/
 		
 		
+		/*
+		System.out.println("========================================");
+		System.out.println("++Concert.searchByConcertFirstGenre++");
+		System.out.println("========================================");
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t장르 = "+temp_concertVO_list.get(i).getConcertFirstGenre());
+		}
+		
+		temp_string = "뮤지";
+		System.out.println("\n검색결과:: " + temp_string);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.searchByConcertFirstGenre",temp_string);
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()
+					+"\t장르 = "+temp_concertVO_list.get(i).getConcertFirstGenre());
+		}
+		System.out.println("\n\n");
+		*/
 		
 		
+		/*
+		System.out.println("========================================");
+		System.out.println("++Concert.searchByConcertActor++");
+		System.out.println("========================================");
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()
+					+"\t배우 = "+temp_concertVO_list.get(i).getConcertActors());
+		}
 		
+		temp_string = "경구";
+		System.out.println("\n검색결과:: " + temp_string);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.searchByConcertActor",temp_string);
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t배우 = "+temp_concertVO_list.get(i).getConcertActors());
+		}
+		System.out.println("\n\n");
+		*/
+		
+		
+		/*
+		System.out.println("========================================");
+		System.out.println("++Concert.searchByConcertCompany++");
+		System.out.println("========================================");
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()
+					+"\t회사 = "+temp_concertVO_list.get(i).getConcertCompany());
+		}
+		
+		temp_string = "y";
+		System.out.println("\n검색결과:: " + temp_string);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.searchByConcertCompany",temp_string);
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t회사 = "+temp_concertVO_list.get(i).getConcertCompany());
+		}
+		System.out.println("\n\n");
+		*/
+		
+		
+		/*
+		System.out.println("========================================");
+		System.out.println("++Concert.searchByConcertHall++");
+		System.out.println("========================================");
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t장소 = "+temp_concertVO_list.get(i).getConcertHall());
+		}
+		
+		temp_string = "세종";
+		System.out.println("\n검색결과:: "  + temp_string);
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.searchByConcertHall",temp_string);
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t장소 = "+temp_concertVO_list.get(i).getConcertHall());
+		}
+		System.out.println("\n\n");
+		*/
+		
+		////////////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////                                       //////////////////////////////////////
+		//////////////////////	R 	E	C	O	M	M	E	N	D	//////////////////////////////////////
+		/////////////////////                                       //////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////
+		System.out.println("========================================");
+		System.out.println("++Concert.recommendByConcertAverageRating++");
+		System.out.println("========================================");
+		temp_concertVO_list= (ArrayList)session.selectList("Concert.selectAll");
+		System.out.println("현재 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t평균별점 = "+temp_concertVO_list.get(i).getConcertAverageRating());
+		}
+		
+		System.out.println("\n추천결과:: "  );
+		temp_concertVO_list = (ArrayList)session.selectList("Concert.recommendByConcertAverageRating");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println("["+i+"]:: ID = " + temp_concertVO_list.get(i).getConcertId()+"\t평균별점 = "+temp_concertVO_list.get(i).getConcertAverageRating());
+		}
+		System.out.println("\n\n");
 		
 		
 		
@@ -233,6 +377,8 @@ public class DBTest {
 		System.out.println(":: 2. get(SELECT)  ? "+name);
 		
 		*/
+		
+		
 	}//end of main
 
 }//end of class
