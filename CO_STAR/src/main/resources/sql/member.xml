@@ -53,7 +53,15 @@
 	</select>
 	
 
+
+	<select id="isIdCheck" parameterType="String" resultType="string">
+		SELECT memberId FROM member WHERE memberId=#{value}
+	</select>
 	
+	<!-- 전화번호부 매칭 -->
+	<select id="isMatchTelNum" parameterType="String">
+		SELECT memberTelNum FROM member WHERE memberTelNum=#{memberTelNum}
+	</select>
 	
 </mapper>
 

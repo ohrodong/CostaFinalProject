@@ -4,6 +4,8 @@ import com.costar.main.vo.ConcertCommentVO;
 import com.costar.main.vo.ConcertSecondGenreVO;
 import com.costar.main.vo.ConcertVO;
 import com.costar.main.vo.FaqnaVO;
+import com.costar.main.vo.HistoryBookmarkVO;
+import com.costar.main.vo.HistoryBookmartVO;
 import com.costar.main.vo.MemberVO;
 import com.costar.main.vo.NoteVO;
 import com.costar.main.vo.NoticeVO;
@@ -327,7 +329,27 @@ public class VoCollection {
 			);
 	
 	
+	HistoryBookmarkVO historyBookmarkVO = new HistoryBookmarkVO(
+			0,//int historyBookmartIsBookmark
+			concertVO, //ConcertVO concertVO
+			memberVO//MemberVO memberVO
+			);
+	
+	
+	HistoryBookmarkVO historyBookmarkVO2 = new HistoryBookmarkVO(
+			1,//int historyBookmartIsBookmark
+			concertVO2, //ConcertVO concertVO
+			memberVO2//MemberVO memberVO
+			);
 
+	HistoryBookmarkVO historyBookmarkVO3 = new HistoryBookmarkVO(
+			0,//int historyBookmartIsBookmark
+			concertVO3, //ConcertVO concertVO
+			memberVO2//MemberVO memberVO
+			);
+	
+
+	
 	public ConcertCommentVO getConcertCommentVO3() {
 		return concertCommentVO3;
 	}
@@ -558,6 +580,30 @@ public class VoCollection {
 
 	public void setFaqnaVO2(FaqnaVO faqnaVO2) {
 		this.faqnaVO2 = faqnaVO2;
+	}
+
+	public HistoryBookmarkVO getHistoryBookmarkVO() {
+		return historyBookmarkVO;
+	}
+
+	public void setHistoryBookmarkVO(HistoryBookmarkVO historyBookmarkVO) {
+		this.historyBookmarkVO = historyBookmarkVO;
+	}
+
+	public HistoryBookmarkVO getHistoryBookmarkVO2() {
+		return historyBookmarkVO2;
+	}
+
+	public void setHistoryBookmarkVO2(HistoryBookmarkVO historyBookmarkVO2) {
+		this.historyBookmarkVO2 = historyBookmarkVO2;
+	}
+
+	public HistoryBookmarkVO getHistoryBookmarkVO3() {
+		return historyBookmarkVO3;
+	}
+
+	public void setHistoryBookmarkVO3(HistoryBookmarkVO historyBookmarkVO3) {
+		this.historyBookmarkVO3 = historyBookmarkVO3;
 	}
 	
 	

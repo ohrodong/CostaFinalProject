@@ -78,6 +78,10 @@ public class DBTest {
 		session.insert("Faqna.addFaqna",vo.getFaqnaVO());
 		session.insert("Faqna.addFaqna",vo.getFaqnaVO2());
 		
+		session.insert("Historybookmark.addBookmark",vo.getHistoryBookmarkVO());
+		session.insert("Historybookmark.addBookmark",vo.getHistoryBookmarkVO2());
+		session.insert("Historybookmark.addBookmark",vo.getHistoryBookmarkVO3());
+
 		session.commit();
 		 */
 		
@@ -90,7 +94,7 @@ public class DBTest {
 		/////////////////////////////////////U P D A T E ///////////////////////////////////////////
 
 //		vo.concertVO.setConcertCommentCount(1);
-//		session.update("Search.updateConcert",vo.getConcertVO());
+//		session.update("Historybookmark.updateBookmark",vo.getHistoryBookmarkVO3());
 //		vo.concertVO2.setConcertCommentCount(3);
 //		session.update("Search.updateConcert",vo.getConcertVO2());
 
