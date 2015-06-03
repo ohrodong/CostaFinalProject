@@ -36,7 +36,7 @@ public class EtcTest {
 		
 //		Historybookmark
 		
-		session.selectList("Historybookmark.showHistory")
+		session.selectList("Historybookmark.showHistory");
 		
 	}//main
 
