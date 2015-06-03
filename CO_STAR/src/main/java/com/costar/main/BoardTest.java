@@ -423,6 +423,7 @@ public class BoardTest {
 		
 		
 		
+<<<<<<< HEAD
 		
 		
 		
@@ -447,6 +448,8 @@ public class BoardTest {
 		//////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
+=======
+>>>>>>> refs/remotes/originohdong/test
 	
 		
 	}//main

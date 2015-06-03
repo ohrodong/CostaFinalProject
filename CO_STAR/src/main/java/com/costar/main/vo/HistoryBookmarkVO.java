@@ -1,26 +1,26 @@
 package com.costar.main.vo;
 
-public class HistoryBookmartVO {
-	int historyBookmartIsBookmark;
+public class HistoryBookmarkVO {
+	int historyBookmarkIsBookmark;
 	
 	ConcertVO concertVO;
 	MemberVO memberVO;
-	public HistoryBookmartVO() {
+	public HistoryBookmarkVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public HistoryBookmartVO(int historyBookmartIsBookmark,
+	public HistoryBookmarkVO(int historyBookmarkIsBookmark,
 			ConcertVO concertVO, MemberVO memberVO) {
 		super();
-		this.historyBookmartIsBookmark = historyBookmartIsBookmark;
+		this.historyBookmarkIsBookmark = historyBookmarkIsBookmark;
 		this.concertVO = concertVO;
 		this.memberVO = memberVO;
 	}
-	public int getHistoryBookmartIsBookmark() {
-		return historyBookmartIsBookmark;
+	public int getHistoryBookmarkIsBookmark() {
+		return historyBookmarkIsBookmark;
 	}
-	public void setHistoryBookmartIsBookmark(int historyBookmartIsBookmark) {
-		this.historyBookmartIsBookmark = historyBookmartIsBookmark;
+	public void setHistoryBookmarkIsBookmark(int historyBookmarkIsBookmark) {
+		this.historyBookmarkIsBookmark = historyBookmarkIsBookmark;
 	}
 	public ConcertVO getConcertVO() {
 		return concertVO;
@@ -36,8 +36,8 @@ public class HistoryBookmartVO {
 	}
 	@Override
 	public String toString() {
-		return "HistoryBookmartVO [historyBookmartIsBookmark="
-				+ historyBookmartIsBookmark + ", concertVO=" + concertVO
+		return "HistoryBookmarkVO [historyBookmarkIsBookmark="
+				+ historyBookmarkIsBookmark + ", concertVO=" + concertVO
 				+ ", memberVO=" + memberVO + "]";
 	}
 	

@@ -15,6 +15,7 @@
 		<typeAlias type="com.costar.main.vo.NoticeVO" alias="noticeVO"/>
 		<typeAlias type="com.costar.main.vo.NoteVO" alias="noteVO"/>
 		<typeAlias type="com.costar.main.vo.FaqnaVO" alias="faqnaVO"/>
+		<typeAlias type="com.costar.main.vo.HistoryBookmarkVO" alias="historyBookmarkVO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -38,6 +39,7 @@
 		<mapper resource="sql/notice.xml" />
 		<mapper resource="sql/faqna.xml" />
 		<mapper resource="sql/comment.xml" />
+		<mapper resource="sql/historybookmark.xml"/>
 		<!-- 나중에 여기에 여러개의 매퍼들을 등록 할 수 있다. 일종의 와이어링이다. -->
 <!-- 		<mapper resource="sql/mybatis-userservice-mapping01.xml" /> -->
 	</mappers>

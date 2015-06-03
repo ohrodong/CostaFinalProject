@@ -35,7 +35,11 @@
 	</delete>
 	
 	
+<<<<<<< HEAD
 	<select id="searchNote" parameterType="string" resultMap="nvo">
+=======
+	<select id="searchNoteByMemberId" parameterType="string" resultMap="nvo">
+>>>>>>> refs/remotes/originohdong/test
 		SELECT * FROM Note WHERE memberId=#{value}
 	</select>
 	
