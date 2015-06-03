@@ -5,7 +5,7 @@ import com.costar.main.vo.ConcertSecondGenreVO;
 import com.costar.main.vo.ConcertVO;
 import com.costar.main.vo.FaqnaVO;
 import com.costar.main.vo.HistoryBookmarkVO;
-import com.costar.main.vo.HistoryBookmartVO;
+import com.costar.main.vo.HistoryBookmarkVO;
 import com.costar.main.vo.MemberVO;
 import com.costar.main.vo.NoteVO;
 import com.costar.main.vo.NoticeVO;
@@ -330,20 +330,20 @@ public class VoCollection {
 	
 	
 	HistoryBookmarkVO historyBookmarkVO = new HistoryBookmarkVO(
-			0,//int historyBookmartIsBookmark
+			0,//int historyBookmarkIsBookmark
 			concertVO, //ConcertVO concertVO
 			memberVO//MemberVO memberVO
 			);
 	
 	
 	HistoryBookmarkVO historyBookmarkVO2 = new HistoryBookmarkVO(
-			1,//int historyBookmartIsBookmark
+			1,//int historyBookmarkIsBookmark
 			concertVO2, //ConcertVO concertVO
 			memberVO2//MemberVO memberVO
 			);
 
 	HistoryBookmarkVO historyBookmarkVO3 = new HistoryBookmarkVO(
-			0,//int historyBookmartIsBookmark
+			0,//int historyBookmarkIsBookmark
 			concertVO3, //ConcertVO concertVO
 			memberVO2//MemberVO memberVO
 			);

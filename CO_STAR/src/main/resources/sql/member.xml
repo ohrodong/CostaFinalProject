@@ -23,7 +23,7 @@
 			#{memberGender},
 			#{memberBirthYear},
 			sysdate,
-			#{memberUpdateDate}
+			''
 		)
 	</insert>
 	
@@ -37,14 +37,15 @@
 		memberAuthority=#{memberAuthority},
 		memberArea=#{memberArea},
 		memberGender=#{memberGender},
-		memberBirthYear=#{memberBirthYear}
+		memberBirthYear=#{memberBirthYear},
+		memberUpdateDate=sysdate
 		WHERE memberId=#{memberId}
 	</update>
 	
 	
 	<!-- 회원정보 삭제 -->
 	<delete id="deleteMember" parameterType="String">
-		DELETE FROM Member WHERE memberId=#{memberId}
+		DELETE FROM Member WHERE memberId=#{value}
 	</delete>
 	
 	<!-- 회원정보 검색 -->
@@ -54,13 +55,15 @@
 	
 
 
-	<select id="isIdCheck" parameterType="String" resultType="string">
-		SELECT memberId FROM member WHERE memberId=#{value}
+	<select id="isIdCheck" parameterType="String" resultType="memberVO">
+		SELECT * FROM member WHERE memberId=#{value}
 	</select>
 	
+	
+	
 	<!-- 전화번호부 매칭 -->
-	<select id="isMatchTelNum" parameterType="String">
-		SELECT memberTelNum FROM member WHERE memberTelNum=#{memberTelNum}
+	<select id="isMatchTelNum" parameterType="String" resultType="memberVO">
+		SELECT *  FROM member WHERE memberTelNum=#{memberTelNum}
 	</select>
 	
 </mapper>

@@ -423,30 +423,6 @@ public class BoardTest {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		System.out.println("\n");
-		temp_int = session.delete("Board.deleteConcertComment",vo.getConcertCommentVO());
-		System.out.println("삭제 결과 = " + temp_int);
-		
-		temp_ConcertCommentVO_list = (ArrayList)session.selectList("Board.selectConcertCommentAll");
-		for (int i = 0; i < temp_ConcertCommentVO_list.size(); i++) {
-			System.out.println(temp_ConcertCommentVO_list.get(i));
-		}
-		searchConcertComment
-		 */
-		//////////////////////////////////////////////////////////////////////////////////////////////
-		
-		
 	
 		
 	}//main

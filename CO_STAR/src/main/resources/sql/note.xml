@@ -35,7 +35,7 @@
 	</delete>
 	
 	
-	<select id="searchNote" parameterType="string" resultMap="nvo">
+	<select id="searchNoteByMemberId" parameterType="string" resultMap="nvo">
 		SELECT * FROM Note WHERE memberId=#{value}
 	</select>
 	

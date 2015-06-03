@@ -37,9 +37,6 @@ public class EtcTest {
 
 		
 		
-//		Historybookmark
-		
-//		session.selectList("Historybookmark.showHistory")
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////							////////////////////////////////////////
 		/////////////////////////////								////////////////////////////////////////
@@ -60,15 +57,18 @@ public class EtcTest {
 		System.out.println("\n\n");
 
 		
+		///////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////										//////////////////////////
+		/////////////////////////            예비 기능                    //////////////////////////
+		////////////////////////										//////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////
 		/*
+		*/
+		
+		
 		System.out.println("========================================");
 		System.out.println("++Historybookmark.deleteBookmark++");
 		System.out.println("========================================");
-		temp_historyBookmarkVO_list=(ArrayList)session.selectList("Historybookmark.showHistoryBookmark");
-		System.out.println("현재 Historybookmark 테이블에 저장되어 있는 값::");
-		for (int i = 0; i < temp_historyBookmarkVO_list.size(); i++) {
-			System.out.println(temp_historyBookmarkVO_list.get(i));
-		}
 		
 		session.delete("Historybookmark.deleteBookmark",vo.getHistoryBookmarkVO3());
 		System.out.println("\n Delete 결과:: "  );
@@ -78,29 +78,34 @@ public class EtcTest {
 		}
 		System.out.println("\n\n");
 		
+		/*
+		*/
+		///////////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////
 		
-		
+		/*
+		 * */
 		System.out.println("========================================");
-		System.out.println("++Historybookmark.addBookmark++");
+		System.out.println("++Historybookmark.addHistory++");
 		System.out.println("========================================");
-		temp_historyBookmarkVO_list=(ArrayList)session.selectList("Historybookmark.showHistoryBookmark");
-		System.out.println("현재 Historybookmark 테이블에 저장되어 있는 값::");
-		for (int i = 0; i < temp_historyBookmarkVO_list.size(); i++) {
-			System.out.println(temp_historyBookmarkVO_list.get(i));
-		}
 		
-		session.insert("Historybookmark.addBookmark",vo.getHistoryBookmarkVO3());
+		session.insert("Historybookmark.addHistory",vo.getHistoryBookmarkVO3());
 		System.out.println("\n Add Bookmark 결과:: "  );
 		temp_historyBookmarkVO_list=(ArrayList)session.selectList("Historybookmark.showHistoryBookmark");
 		for (int i = 0; i < temp_historyBookmarkVO_list.size(); i++) {
 			System.out.println(temp_historyBookmarkVO_list.get(i));
 		}
 		System.out.println("\n\n");
+		/*
 		*/
 		
 		/*
+		*/
+		
+		temp_string = "hhhh@hanmail.com";
 		System.out.println("========================================");
-		System.out.println("++Historybookmark.showBookmark++");
+		System.out.println("++Historybookmark.showBookmark++\t\t["+ temp_string+"]" );
 		System.out.println("========================================");
 		temp_historyBookmarkVO_list=(ArrayList)session.selectList("Historybookmark.showHistoryBookmark");
 		System.out.println("현재 Historybookmark 테이블에 저장되어 있는 값::");
@@ -108,20 +113,23 @@ public class EtcTest {
 			System.out.println(temp_historyBookmarkVO_list.get(i));
 		}
 		
-		temp_string = "hhhh@hanmail.com";
+		
 		temp_concertVO_list=(ArrayList)session.selectList("Historybookmark.showBookmark",temp_string);
 		System.out.println("\n Bookmark만 Show 결과:: "  );
 		for (int i = 0; i < temp_concertVO_list.size(); i++) {
 			System.out.println(temp_concertVO_list.get(i));
 		}
 		System.out.println("\n\n");
+		/*
 		*/
 		
 
 		
 		/*
+		*/
+		temp_string = "hhhh@hanmail.com";
 		System.out.println("========================================");
-		System.out.println("++Historybookmark.showHistory++");
+		System.out.println("++Historybookmark.showHistory++\t\t["+temp_string+"]");
 		System.out.println("========================================");
 		temp_historyBookmarkVO_list=(ArrayList)session.selectList("Historybookmark.showHistoryBookmark");
 		System.out.println("현재 Historybookmark 테이블에 저장되어 있는 값::");
@@ -129,17 +137,64 @@ public class EtcTest {
 			System.out.println(temp_historyBookmarkVO_list.get(i));
 		}
 		
-		temp_string = "hhhh@hanmail.com";
+		
 		temp_concertVO_list=(ArrayList)session.selectList("Historybookmark.showHistory",temp_string);
-		System.out.println("\n Bookmark만 Show 결과:: "  );
+		System.out.println("\n history만 Show 결과:: "  );
 		for (int i = 0; i < temp_concertVO_list.size(); i++) {
 			System.out.println(temp_concertVO_list.get(i));
+		}
+		System.out.println("\n\n");
+		/*
+		*/
+		
+		
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////							////////////////////////////////////////
+		/////////////////////////////								////////////////////////////////////////
+		////////////////////////////           NOTE            ////////////////////////////////////////
+		////////////////////////////								////////////////////////////////////////
+		////////////////////////////								////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////////////
+
+		
+		System.out.println("========================================");
+		System.out.println("++Note.selectAllNote++");
+		System.out.println("========================================");
+		temp_noteVO_list = (ArrayList)session.selectList("Note.selectAllNote");
+		for (int i = 0; i < temp_noteVO_list.size(); i++) {
+			System.out.println(temp_noteVO_list.get(i));
+		}
+		System.out.println("\n\n");
+		
+		
+		/*
+		System.out.println("========================================");
+		System.out.println("++Note.deleteNote++");
+		System.out.println("========================================");
+		temp_int = session.delete("Note.deleteNote","k@gmail.com");
+		System.out.println("삭제 결과 = " + temp_int);
+		
+		temp_noteVO_list = (ArrayList)session.selectList("Note.selectAllNote");
+		for (int i = 0; i < temp_noteVO_list.size(); i++) {
+			System.out.println(temp_noteVO_list.get(i));
 		}
 		System.out.println("\n\n");
 		*/
 		
 		
 		
+		/*
+		temp_string = "k@gmail.com";
+		System.out.println("========================================");
+		System.out.println("++Note.searchNoteByMemberId++ \t\t["+ temp_string + "]");
+		System.out.println("========================================");
+		temp_noteVO_list = (ArrayList)session.selectList("Note.searchNoteByMemberId", temp_string);
+		for (int i = 0; i < temp_noteVO_list.size(); i++) {
+			System.out.println(temp_noteVO_list.get(i));
+		}
+		System.out.println("\n\n");
+		*/
 		
 		
 	}//main
