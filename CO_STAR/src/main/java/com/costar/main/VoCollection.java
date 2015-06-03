@@ -308,20 +308,25 @@ public class VoCollection {
 	
 	FaqnaVO faqnaVO = new FaqnaVO(
 			1, //int faqnaNo;
-			"공지사항1", //String faqnaTitle;
+			"공지사항1 제목", //String faqnaTitle;
 			"공지사항1 내용", //String faqnaContent;
-			"공지사항1 카테고리"//faqnaCategory, faqnaWriteTime, faqnaUpdateTime, memberVO
+			"공지사항1 카테고리",//String faqnaCategory, 
+			"",//String faqnaWriteTime, 
+			" ",//String faqnaUpdateTime, 
+			memberVO//MemberVO memberVO
+			);
+	
+	FaqnaVO faqnaVO2 = new FaqnaVO(
+			2, //int faqnaNo;
+			"공지사항2 제목", //String faqnaTitle;
+			"공지사항2 내용", //String faqnaContent;
+			"공지사항2 카테고리",//String faqnaCategory, 
+			"",//String faqnaWriteTime, 
+			" ",//String faqnaUpdateTime, 
+			memberVO//MemberVO memberVO
 			);
 	
 	
-	
-	
-	
-	String faqnaCategory;
-	String faqnaWriteTime;//Date
-	String faqnaUpdateTime;//Date
-	
-	MemberVO memberVO;
 
 	public ConcertCommentVO getConcertCommentVO3() {
 		return concertCommentVO3;
@@ -537,6 +542,22 @@ public class VoCollection {
 
 	public void setNoticeVO2(NoticeVO noticeVO2) {
 		this.noticeVO2 = noticeVO2;
+	}
+
+	public FaqnaVO getFaqnaVO() {
+		return faqnaVO;
+	}
+
+	public void setFaqnaVO(FaqnaVO faqnaVO) {
+		this.faqnaVO = faqnaVO;
+	}
+
+	public FaqnaVO getFaqnaVO2() {
+		return faqnaVO2;
+	}
+
+	public void setFaqnaVO2(FaqnaVO faqnaVO2) {
+		this.faqnaVO2 = faqnaVO2;
 	}
 	
 	

@@ -54,10 +54,10 @@ public class DBTest {
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO6());
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO7());
 		
-		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO());
-		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO2());
-		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO3());
-		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO4());
+		temp_int3 = session.insert("Comment.addConcertComment",vo.getConcertCommentVO());
+		temp_int3 = session.insert("Comment.addConcertComment",vo.getConcertCommentVO2());
+		temp_int3 = session.insert("Comment.addConcertComment",vo.getConcertCommentVO3());
+		temp_int3 = session.insert("Comment.addConcertComment",vo.getConcertCommentVO4());
 		
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO());
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO2());
@@ -72,8 +72,11 @@ public class DBTest {
 		session.insert("Note.addNote",vo.getNoteVO3());
 		session.insert("Note.addNote",vo.getNoteVO4());
 
-		session.insert("Board.addNotice",vo.getNoticeVO());
-		session.insert("Board.addNotice",vo.getNoticeVO2());
+		session.insert("Notice.addNotice",vo.getNoticeVO());
+		session.insert("Notice.addNotice",vo.getNoticeVO2());
+		
+		session.insert("Faqna.addFaqna",vo.getFaqnaVO());
+		session.insert("Faqna.addFaqna",vo.getFaqnaVO2());
 		
 		session.commit();
 		 */

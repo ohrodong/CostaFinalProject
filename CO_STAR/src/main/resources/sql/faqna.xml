@@ -25,7 +25,7 @@
 			#{faqnaContent},
 			#{faqnaCategory},
 			sysdate,
-			#{faqnaUpdateTime},
+			'',
 			#{memberVO.memberId}	
 		)	
 	</insert>
@@ -48,10 +48,10 @@
 		 
 		 
 	<select id="selectAllFaqna" resultMap="FaqnaMap">
-		SELECT * FROM faqna order by desc
+		SELECT * FROM faqna order by faqnaNo desc
 	</select>
 
-	<select id="selectByFaqnaNo" parameterType="string" resultMap="FaqnaMap">
+	<select id="searchFaqnaByNo" parameterType="int" resultMap="FaqnaMap">
 		SELECT * FROM faqna WHERE faqnaNo=#{value}
 	</select>
 

@@ -274,45 +274,58 @@ public class BoardTest {
 		/////////////////////////////////////////////////////////////////////////////////////////////
 
 		
-		
 		/*
 		System.out.println("========================================");
-		System.out.println("++Comment.deleteConcertComment++");
+		System.out.println("++Faqna.deleteFaqna++");
 		System.out.println("========================================");
-		
-		temp_ConcertCommentVO_list= (ArrayList)session.selectList("Comment.selectConcertCommentAll");
-		System.out.println("현재 테이블에 저장되어 있는 값::");
-		for (int i = 0; i < temp_ConcertCommentVO_list.size(); i++) {
-			System.out.println(temp_ConcertCommentVO_list.get(i));
-		}
-		
-		session.delete("Comment.deleteConcertComment",vo.getConcertCommentVO());
-		System.out.println("\n Delete 결과:: "  );
-		temp_ConcertCommentVO_list= (ArrayList)session.selectList("Comment.selectConcertCommentAll");
-		for (int i = 0; i < temp_ConcertCommentVO_list.size(); i++) {
-			System.out.println(temp_ConcertCommentVO_list.get(i));
-		}
-		System.out.println("\n\n");
-		
-
-		*/
-		System.out.println("========================================");
-		System.out.println("++Faqna.addFaqna++");
-		System.out.println("========================================");
-		temp_faqnVO_list= (ArrayList)session.selectList("Faqna.selectAllFaqna");
+		temp_faqnVO_list=(ArrayList)session.selectList("Faqna.selectAllFaqna");
 		System.out.println("현재 Faqna 테이블에 저장되어 있는 값::");
 		for (int i = 0; i < temp_faqnVO_list.size(); i++) {
 			System.out.println(temp_faqnVO_list.get(i));
 		}
 		
-		System.out.println("\nAdd 결과:: "  );
-		session.insert("Comment.addConcertComment", vo.getConcertCommentVO());
-		temp_faqnVO_list= (ArrayList)session.selectList("Faqna.selectAllFaqna");
+		session.delete("Comment.deleteConcertComment",vo.getConcertCommentVO());
+		System.out.println("\n Delete 결과:: "  );
+		session.delete("Faqna.deleteFaqna",1);
+		temp_faqnVO_list=(ArrayList)session.selectList("Faqna.selectAllFaqna");
 		for (int i = 0; i < temp_faqnVO_list.size(); i++) {
 			System.out.println(temp_faqnVO_list.get(i));
 		}
 		System.out.println("\n\n");
 		
+
+		System.out.println("========================================");
+		System.out.println("++Faqna.addFaqna++");
+		System.out.println("========================================");
+		
+		
+		session.insert("Faqna.addFaqna", vo.getFaqnaVO());
+		
+		System.out.println("\nAdd 결과:: "  );
+		temp_faqnVO_list= (ArrayList)session.selectList("Faqna.selectAllFaqna");
+		for (int i = 0; i < temp_faqnVO_list.size(); i++) {
+			System.out.println(temp_faqnVO_list.get(i));
+		}
+		System.out.println("\n\n");
+		*/
+		
+		
+		/*
+		System.out.println("========================================");
+		System.out.println("++Faqna.searchFaqnaByNo++");
+		System.out.println("========================================");
+		temp_faqnVO_list=(ArrayList)session.selectList("Faqna.selectAllFaqna");
+		System.out.println("현재 Faqna 테이블에 저장되어 있는 값::");
+		for (int i = 0; i < temp_faqnVO_list.size(); i++) {
+			System.out.println(temp_faqnVO_list.get(i));
+		}
+		
+		temp_int = 1;
+		temp_faqnVO = session.selectOne("Faqna.searchFaqnaByNo",temp_int);
+		System.out.println("\n "+temp_int+"번 검색 결과:: "  );
+		System.out.println(temp_faqnVO);
+		System.out.println("\n\n");
+		*/
 		
 		
 		/*
