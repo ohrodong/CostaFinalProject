@@ -3,6 +3,7 @@ package com.costar.main;
 import com.costar.main.vo.ConcertCommentVO;
 import com.costar.main.vo.ConcertSecondGenreVO;
 import com.costar.main.vo.ConcertVO;
+import com.costar.main.vo.FaqnaVO;
 import com.costar.main.vo.MemberVO;
 import com.costar.main.vo.NoteVO;
 import com.costar.main.vo.NoticeVO;
@@ -305,7 +306,23 @@ public class VoCollection {
 			memberVO2//memberVO
 			);
 	
+	FaqnaVO faqnaVO = new FaqnaVO(
+			1, //int faqnaNo;
+			"공지사항1", //String faqnaTitle;
+			"공지사항1 내용", //String faqnaContent;
+			"공지사항1 카테고리"//faqnaCategory, faqnaWriteTime, faqnaUpdateTime, memberVO
+			);
 	
+	
+	
+	
+	
+	String faqnaCategory;
+	String faqnaWriteTime;//Date
+	String faqnaUpdateTime;//Date
+	
+	MemberVO memberVO;
+
 	public ConcertCommentVO getConcertCommentVO3() {
 		return concertCommentVO3;
 	}

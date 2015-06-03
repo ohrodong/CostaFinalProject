@@ -3,8 +3,18 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="Comment">
+	<resultMap type="ConcertCommentVO" id="commentMap">
+		<result property="concertVO.concertId" column="concertId"/>
+		<result property="memberVO.memberId" column="memberId"/>
+		<result property="concertCommentContent" column="concertCommentContent"/>
+		<result property="concertCommentWriteTime" column="concertCommentWriteTime"/>
+		<result property="concertCommentUpdateTime" column="concertCommentUpdateTime" />
+		<result property="concertCommentLike" column="concertCommentLike"/>
+		<result property="concertCommentRating" column="concertCommentRating"/>
+	</resultMap>
 	
-	<select id="selectConcertCommentAll" resultType="concertCommentVO">
+	
+	<select id="selectConcertCommentAll" resultMap="commentMap">
 			SELECT * FROM ConcertComment
 	</select>
 	
@@ -27,32 +37,48 @@
 			concertCommentUpdateTime=sysdate,
 			concertCommentLike= #{concertCommentLike},
 			concertCommentRating = #{concertCommentRating}
-		WHERE concertId=#{concertVO.concertId}
+		WHERE concertId=#{concertVO.concertId} AND memberId=#{memberVO.memberId}
 	</update>
 	
-	
-	<update id="updateConcertCommentCount" parameterType="string">
-		UPDATE Concert SET concertCommentCount = concertCommentCount+1 
-		WHERE concertId=#{value}
+	<update id="updateConcertCommentCount" parameterType="concertCommentVO">
+		UPDATE Concert 
+		SET concertCommentCount = concertCommentCount+1 
+		WHERE concertId=
+		(SELECT concertId FROM concertComment WHERE concertId=#{concertVO.concertId} AND memberId=#{memberVO.memberId})
+		
 	</update>
 	
+	<update id="updateConcertCommentRating" parameterType="concertCommentVO">
+		UPDATE ConcertComment
+		SET concertCommentRating = #{concertCommentRating} 
+		WHERE concertId=#{concertVO.concertId} AND memberId=#{memberVO.memberId}
+	</update>
+	 
+
 	<delete id="deleteConcertComment" parameterType="concertCommentVO">
 		DELETE FROM ConcertComment 
-		WHERE concertId=#{concertVO.concertId} AND
-		memberId=#{memberVO.memberId}
+		WHERE concertId=#{concertVO.concertId} AND memberId=#{memberVO.memberId}
 	</delete>
+	
+	<select id="searchConcertComment" parameterType="string" resultMap="commentMap"> 
+		SELECT * FROM ConcertComment
+		WHERE concertCommentContent LIKE '%'||#{value}||'%'
+	</select>
+	
+	
+	<select id="showConcertCommentById" parameterType="concertCommentVO" resultMap="commentMap"> 
+		SELECT * FROM ConcertComment
+		WHERE memberId=#{memberId}
+	</select>
+	
+	
+	
+	
+	
+	
 	
 		
 	
 
 </mapper>
-
-
-
-
-
-
-
-
-
 

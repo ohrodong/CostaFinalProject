@@ -40,9 +40,9 @@
 	</update>
 
 
-	<delete id="deleteFaqna" parameterType="faqnaVO">
+	<delete id="deleteFaqna" parameterType="int">
 		DELETE FROM Faqna WHERE
-		faqnaNo=#{faqnaNo}
+		faqnaNo=#{value}
 	</delete> 
 		 
 		 

@@ -30,7 +30,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="sql/mybatis-userservice-mapping.xml" />
-		<mapper resource="sql/board.xml" />
 		<mapper resource="sql/concert.xml" />
 		<mapper resource="sql/member.xml" />
 		<mapper resource="sql/note.xml" />

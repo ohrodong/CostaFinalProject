@@ -51,9 +51,6 @@
 		SELECT * FROM notice WHERE noticeNo = #{value}
 	</select>
 
-	<select id="selectByNoticeNo" parameterType="string" resultType="noticeVO">
-		SELECT * FROM notice WHERE noticeNo = #{value}
-	</select>
 	
 	 
 
