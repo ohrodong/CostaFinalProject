@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="Comment">
+	
+	<select id="selectConcertCommentAll" resultType="concertCommentVO">
+			SELECT * FROM ConcertComment
+	</select>
+	
+	<insert id="addConcertComment" parameterType="concertCommentVO">
+		INSERT INTO ConcertComment VALUES
+		(
+			#{concertVO.concertId},
+			#{memberVO.memberId},
+			#{concertCommentContent},
+			sysdate,
+			'',
+			#{concertCommentLike},
+			#{concertCommentRating}
+		)
+	</insert>
+	
+	<update id="updateConcertComment" parameterType="concertCommentVO" >
+		UPDATE ConcertComment SET
+			concertCommentContent=#{concertCommentContent},
+			concertCommentUpdateTime=sysdate,
+			concertCommentLike= #{concertCommentLike},
+			concertCommentRating = #{concertCommentRating}
+		WHERE concertId=#{concertVO.concertId}
+	</update>
+	
+	
+	<update id="updateConcertCommentCount" parameterType="string">
+		UPDATE Concert SET concertCommentCount = concertCommentCount+1 
+		WHERE concertId=#{value}
+	</update>
+	
+	<delete id="deleteConcertComment" parameterType="concertCommentVO">
+		DELETE FROM ConcertComment 
+		WHERE concertId=#{concertVO.concertId} AND
+		memberId=#{memberVO.memberId}
+	</delete>
+	
+		
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
