@@ -19,6 +19,7 @@ public class ConcertVO {
 	String concertUpdateTime;//Date
 	String concertAverageRating;
 	int concertHits;
+	int concertCommentCount;
 	
 	MemberVO memberVO;
 
@@ -34,7 +35,8 @@ public class ConcertVO {
 			String concertRunningTime, String concertNotice,
 			String concertCompany, String concertActors,
 			String concertWriteTime, String concertUpdateTime,
-			String concertAverageRating, int concertHits, MemberVO memberVO) {
+			String concertAverageRating, int concertHits, int concertCommentCount,
+			MemberVO memberVO) {
 		super();
 		this.concertId = concertId;
 		this.concertName = concertName;
@@ -53,6 +55,7 @@ public class ConcertVO {
 		this.concertUpdateTime = concertUpdateTime;
 		this.concertAverageRating = concertAverageRating;
 		this.concertHits = concertHits;
+		this.concertCommentCount = concertCommentCount;
 		this.memberVO = memberVO;
 	}
 
@@ -200,6 +203,14 @@ public class ConcertVO {
 		this.memberVO = memberVO;
 	}
 
+	public int getConcertCommentCount() {
+		return concertCommentCount;
+	}
+
+	public void setConcertCommentCount(int concertCommentCount) {
+		this.concertCommentCount = concertCommentCount;
+	}
+
 	@Override
 	public String toString() {
 		return "ConcertVO [concertId=" + concertId + ", concertName="
@@ -214,8 +225,8 @@ public class ConcertVO {
 				+ ", concertWriteTime=" + concertWriteTime
 				+ ", concertUpdateTime=" + concertUpdateTime
 				+ ", concertAverageRating=" + concertAverageRating
-				+ ", concertHits=" + concertHits + ", memberVO=" + memberVO
-				+ "]";
+				+ ", concertHits=" + concertHits + ", concertCommentCount="
+				+ concertCommentCount + ", memberVO=" + memberVO + "]";
 	}
 	
 	

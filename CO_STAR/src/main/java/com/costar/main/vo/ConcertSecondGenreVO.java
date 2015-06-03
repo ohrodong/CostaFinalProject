@@ -4,7 +4,7 @@ public class ConcertSecondGenreVO {
 	int concertSecondGenreNo;
 	String concertSecondGenre;
 	
-	ConcertVO concertId;
+	ConcertVO concertVO;
 
 	public ConcertSecondGenreVO() {
 		super();
@@ -12,11 +12,11 @@ public class ConcertSecondGenreVO {
 	}
 
 	public ConcertSecondGenreVO(int concertSecondGenreNo,
-			String concertSecondGenre, ConcertVO concertId) {
+			String concertSecondGenre, ConcertVO concertVO) {
 		super();
 		this.concertSecondGenreNo = concertSecondGenreNo;
 		this.concertSecondGenre = concertSecondGenre;
-		this.concertId = concertId;
+		this.concertVO = concertVO;
 	}
 
 	public int getConcertSecondGenreNo() {
@@ -36,18 +36,18 @@ public class ConcertSecondGenreVO {
 	}
 
 	public ConcertVO getConcertId() {
-		return concertId;
+		return concertVO;
 	}
 
 	public void setConcertId(ConcertVO concertId) {
-		this.concertId = concertId;
+		this.concertVO = concertId;
 	}
 
 	@Override
 	public String toString() {
 		return "ConcertSecondGenreVO [concertSecondGenreNo="
 				+ concertSecondGenreNo + ", concertSecondGenre="
-				+ concertSecondGenre + ", concertId=" + concertId + "]";
+				+ concertSecondGenre + ", concertId=" + concertVO + "]";
 	}
 	
 	

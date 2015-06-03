@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Note">
+	<resultMap type="noteVO" id="nvo">
+		<result property="noteNo" column="noteNo"/>
+		<result property="memberVO.memberId" column="memberId"/>
+		<result property="noteTitle" column="noteTitle"/>
+		<result property="noteContent" column="noteContent"/>
+		<result property="noteWriteTime" column="noteWriteTime"/>
+	
+	</resultMap>
+
+	<!--모든 쪽지 검색  -->
+	<select id="selectAllNote" resultMap="nvo">
+		SELECT * FROM Note
+	</select>
+
+	<!-- 쪽지 생성 -->
+	<insert id="addNote" parameterType="noteVO">
+		INSERT INTO Note VALUES
+		(
+		#{noteNo},
+		#{memberVO.memberId},
+		#{noteTitle},
+		#{noteContent},
+		TO_DATE(#{noteWriteTime},'YYYY-MM-DD')
+		)
+	</insert>
+	
+	<delete id="deleteNote" parameterType="string">
+		DELETE FROM Note WHERE memberId = #{value}
+	</delete>
+	
+	
+	<select id="searchNote" parameterType="string" resultMap="nvo">
+		SELECT * FROM Note WHERE memberId=#{value}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

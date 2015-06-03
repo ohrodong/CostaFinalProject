@@ -9,6 +9,7 @@ public class ConcertCommentVO {
 	
 	ConcertVO concertVO;
 	MemberVO memberVO;
+	
 	public ConcertCommentVO() {
 		super();
 		// TODO Auto-generated constructor stub

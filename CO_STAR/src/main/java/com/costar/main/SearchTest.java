@@ -19,7 +19,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
   * ㅇ SqlMapConfig01.xml / mybatis-userservice-mapping01.xml
   * ㅇ MyBATIS Framework 이용 QUERY ( SELECT ) TEST 
   */
-public class DBTest {
+public class SearchTest {
 	public static void main(String[] args) throws Exception{
 		int temp_int=0, temp_int2=0, temp_int3=0;
 		String temp_string="",temp_string2="",temp_string3="";
@@ -45,7 +45,6 @@ public class DBTest {
 		temp_int = session.insert("Member.addMember",vo.getMemberVO());
 		temp_int = session.insert("Member.addMember",vo.getMemberVO2());
 		temp_int = session.insert("Member.addMember",vo.getMemberVO3());
-		
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO());
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO2());
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO3());
@@ -53,12 +52,10 @@ public class DBTest {
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO5());
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO6());
 		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO7());
-		
 		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO());
 		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO2());
 		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO3());
 		temp_int3 = session.insert("Board.addConcertComment",vo.getConcertCommentVO4());
-		
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO());
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO2());
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO3());
@@ -66,26 +63,39 @@ public class DBTest {
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO5());
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO6());
 		session.insert("Search.addSecondGenre",vo.getConcertSecondGenreVO7());
-
 		session.insert("Note.addNote",vo.getNoteVO());
 		session.insert("Note.addNote",vo.getNoteVO2());
 		session.insert("Note.addNote",vo.getNoteVO3());
 		session.insert("Note.addNote",vo.getNoteVO4());
-
-		session.insert("Board.addNotice",vo.getNoticeVO());
-		session.insert("Board.addNotice",vo.getNoticeVO2());
 		
 		session.commit();
 		 */
-		
-		//////////////////////////////////////////////////////////////////////////////////////////////
 
 		
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////
+//		temp_int2 = session.insert("Search.addConcert",vo.getConcertVO5());
+//		session.insert("Member.addMember",vo.getMemberVO3());
+//		session.insert("Board.addConcertComment",vo.getConcertCommentVO4()); 
+//		session.commit();
 		
 		
 		
 		/////////////////////////////////////U P D A T E ///////////////////////////////////////////
-
+		/*
+		ConcertVO update_vo1 = concertVO;
+		update_vo1.setConcertId("0003");
+		temp_int = session.insert("Search.addConcert",update_vo1);
+		temp_concertVO =  session.selectOne("Search.selectByConcertId","0003");
+		System.out.println("업데이트 전 지역구 = " + temp_concertVO.getConcertArea());
+		
+		update_vo1.setConcertArea("영등포구");
+		temp_int = session.update("Search.updateConcert",update_vo1);
+		System.out.println("update_vo1 Update 결과 = " + temp_int);
+		temp_concertVO =  session.selectOne("Search.selectByConcertId","0003");
+		System.out.println("업데이트 후 지역구 = " + temp_concertVO.getConcertArea());
+		*/
+		//////////////////////////////////////////////////////////////////////////////////////////////
 //		vo.concertVO.setConcertCommentCount(1);
 //		session.update("Search.updateConcert",vo.getConcertVO());
 //		vo.concertVO2.setConcertCommentCount(3);
@@ -94,7 +104,6 @@ public class DBTest {
 //		temp_concertVO = vo.getConcertVO4();
 //		session.insert("Search.addConcert",temp_concertVO);
 //		session.commit();
-		//////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
 		
@@ -129,20 +138,19 @@ public class DBTest {
 		
 		
 		/*
-		ArrayList<MemberVO> list = (ArrayList)session.selectList("Member.selectAllMember");
+		ArrayList<MemberVO> list = (ArrayList)session.selectList("Member.selectAll");
 		ArrayList<ConcertVO> list2 = (ArrayList)session.selectList("Search.searchAllConcert");
 		 */
 		
-//		
-//		System.out.println("========================================");
-//		System.out.println("++Member.selectAllMember++");
-//		System.out.println("========================================");
-//		temp_concertVO_list = (ArrayList)session.selectList("Member.selectAllMember");
-//		for (int i = 0; i < temp_concertVO_list.size(); i++) {
-//			System.out.println(temp_concertVO_list.get(i));
-//		}
-//		System.out.println("\n\n");
-//		
+		/*
+		System.out.println("========================================");
+		System.out.println("++Member.selectAll++");
+		System.out.println("========================================");
+		temp_concertVO_list = (ArrayList)session.selectList("Member.selectAll");
+		for (int i = 0; i < temp_concertVO_list.size(); i++) {
+			System.out.println(temp_concertVO_list.get(i));
+		}
+		System.out.println("\n\n");*/
 		
 		/*
 		System.out.println("========================================");

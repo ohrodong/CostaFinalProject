@@ -4,25 +4,13 @@
 
 
 <mapper namespace="Member">
-<!-- 
-	<resultMap type="mem" id="memberMap">
-		<result property="id" column="id" jdbcType="VARCHAR" />
-		<result property="password" column="password" jdbcType="VARCHAR" />
-		<result property="name" column="name" jdbcType="VARCHAR" />
-		<result property="address" column="address" jdbcType="VARCHAR" />
-	</resultMap>
--->	 
-	
-	<!-- login -->
-	<!-- 
-	<select id="login" parameterType="mem" resultMap="memberMap">
-		SELECT * FROM member
-		WHERE
-		id=#{id} AND password=#{password}
-
+	<!--모든 회원정보 검색  -->
+	<select id="selectAllMember" resultType="memberVO">
+		SELECT * FROM Member
 	</select>
-	-->
-	<insert id="add" parameterType="memberVO">
+
+	<!-- 회원생성 -->
+	<insert id="addMember" parameterType="memberVO">
 		INSERT INTO Member VALUES
 		(
 			#{memberId},
@@ -39,9 +27,34 @@
 		)
 	</insert>
 	
-	<select id="selectAll" resultType="memberVO">
-		SELECT * FROM Member
+		
+	<!-- 회원정보 수정 -->
+	<update id="updateMember" parameterType="memberVO">
+		UPDATE Member SET memberPw=#{memberPw},
+		memberAddr=#{memberAddr},
+		memberTelNum=#{memberTelNum},
+		memberCompanyNum=#{memberCompanyNum},
+		memberAuthority=#{memberAuthority},
+		memberArea=#{memberArea},
+		memberGender=#{memberGender},
+		memberBirthYear=#{memberBirthYear}
+		WHERE memberId=#{memberId}
+	</update>
+	
+	
+	<!-- 회원정보 삭제 -->
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM Member WHERE memberId=#{memberId}
+	</delete>
+	
+	<!-- 회원정보 검색 -->
+	<select id="searchMember" parameterType="String" resultType="memberVO">
+		SELECT * FROM Member WHERE memberId=#{memberId}
 	</select>
+	
+
+	
+	
 </mapper>
 
 

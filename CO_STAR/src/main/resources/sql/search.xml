@@ -2,8 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Concert">
+<mapper namespace="Search">
 
+<!-- 
+	<resultMap type="mem" id="memberMap">
+		<result property="id" column="id" jdbcType="VARCHAR" />
+		<result property="password" column="password" jdbcType="VARCHAR" />
+		<result property="name" column="name" jdbcType="VARCHAR" />
+		<result property="address" column="address" jdbcType="VARCHAR" />
+	</resultMap>
+-->	 
 
 	<insert id="addConcert" parameterType="concertVO">
 		INSERT INTO Concert VALUES
@@ -56,12 +64,6 @@
 	<delete id="deleteConcert" parameterType="string">
 		DELETE FROM Concert WHERE concertId=#{concertId} 
 	</delete>
-	
-	
-	<select id="showConcert" resultType="concertVO">
-		SELECT * FROM Concert
-		ORDER BY concertWriteTime
-	</select>
 	
 	
 	
@@ -136,6 +138,79 @@
 	<include refid="select-concert"/>
 		(<include refid="select-concert"/> Concert WHERE concertHall LIKE '%'||#{value}||'%')
 		<include refid="whereorder-concert"/>
+	</select>
+	
+	
+	<select id="recommendByConcertAverageRating" resultType="concertVO">
+		SELECT * FROM Concert 
+		<![CDATA[ 
+			WHERE concertEndDate >= sysdate 
+		]]>
+		ORDER BY TO_NUMBER(concertAverageRating) DESC, concertCommentCount DESC, concertEndDate
+	</select>
+
+
+	<select id="recommendByConcertConcertComment" resultType="concertVO">
+		SELECT * FROM Concert 
+		<![CDATA[ 
+			WHERE concertEndDate >= sysdate 
+		]]>
+		ORDER BY concertCommentCount DESC, concertEndDate
+	</select>
+
+	<select id="recommendByConcertMonth" parameterType="string" resultType="concertVO">
+		SELECT * FROM Concert 
+		WHERE TO_DATE(#{value}) BETWEEN  TO_DATE(TRUNC(TO_DATE(concertStartDate),'MM')) AND concertEndDate
+		ORDER BY TO_NUMBER(concertAverageRating) DESC, concertCommentCount DESC, concertEndDate
+	</select>
+
+
+	<select id="recommendByConcertHits" resultType="concertVO">
+		SELECT * FROM Concert 
+		<![CDATA[ 
+			WHERE concertEndDate >= sysdate 
+		]]>
+		ORDER BY concertHits DESC, concertEndDate
+	</select>
+	
+	
+	<select id="recommendByConcertDate" parameterType="string" resultType="concertVO">
+		SELECT * FROM Concert 
+		WHERE TO_DATE(#{value}) BETWEEN  concertStartDate AND concertEndDate
+		ORDER BY TO_NUMBER(concertAverageRating) DESC, concertEndDate
+	</select>
+	
+	
+	
+	<select id="recommendByConcertGenre" parameterType="string" resultType="concertVO">
+		SELECT * FROM 
+		(SELECT s.concertId, s.concertFirstGenre, csg.concertSecondGenre 
+		FROM ConcertSecondGenre csg, 
+			(SELECT * FROM Concert WHERE concertFirstGenre LIKE '%'||#{value}||'%') s 
+		WHERE csg.concertId = s.concertId
+		GROUP BY s.concertId,csg.concertSecondGenre,s.concertFirstGenre)
+		 GROUP BY s.
+		
+	</select>
+	
+	
+	<select id="recommendByConcertArea" parameterType="concertVO" resultType="concertVO">
+		SELECT * FROM 
+		(SELECT * FROM Concert 
+			WHERE #{concertStartDate} 
+			BETWEEN  TO_DATE(TRUNC(TO_DATE(concertStartDate),'MM')) 
+			AND concertEndDate
+			ORDER BY TO_NUMBER(concertAverageRating) DESC, 
+			concertCommentCount DESC, concertEndDate)
+		WHERE concertArea LIKE '%'||#{concertArea}||'%'
+	</select>
+	
+	
+	<select id="recommendByConcertIsForeign" parameterType="ConcertSecondGenreVO" resultType="concertVO">
+		SELECT c.* FROM Concert c, 
+		(SELECT concertId FROM ConcertSecondGenre
+		WHERE concertSecondGenre LIKE '%내한공연%') s
+		WHERE c.concertId = s.concertId
 	</select>
 	
 	

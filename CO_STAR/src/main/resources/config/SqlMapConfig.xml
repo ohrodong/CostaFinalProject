@@ -9,7 +9,12 @@
 	
 	<typeAliases>
 		<typeAlias type="com.costar.main.vo.ConcertVO" alias="concertVO" />
+		<typeAlias type="com.costar.main.vo.ConcertCommentVO" alias="concertCommentVO" />
+		<typeAlias type="com.costar.main.vo.ConcertSecondGenreVO" alias="concertSecondGenreVO"/>
 		<typeAlias type="com.costar.main.vo.MemberVO" alias="memberVO" />
+		<typeAlias type="com.costar.main.vo.NoticeVO" alias="noticeVO"/>
+		<typeAlias type="com.costar.main.vo.NoteVO" alias="noteVO"/>
+		<typeAlias type="com.costar.main.vo.FaqnaVO" alias="faqnaVO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -25,8 +30,13 @@
 	</environments>
 	<mappers>
 		<mapper resource="sql/mybatis-userservice-mapping.xml" />
+		<mapper resource="sql/board.xml" />
 		<mapper resource="sql/concert.xml" />
 		<mapper resource="sql/member.xml" />
+		<mapper resource="sql/note.xml" />
+		<mapper resource="sql/recommend.xml" />
+		<mapper resource="sql/search.xml" />
+		<mapper resource="sql/notice.xml" />
 		<!-- 나중에 여기에 여러개의 매퍼들을 등록 할 수 있다. 일종의 와이어링이다. -->
 <!-- 		<mapper resource="sql/mybatis-userservice-mapping01.xml" /> -->
 	</mappers>
