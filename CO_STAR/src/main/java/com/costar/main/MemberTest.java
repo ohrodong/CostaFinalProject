@@ -96,7 +96,6 @@ public class MemberTest {
 		*/
 		
 		
-		
 		/*
 		System.out.println("========================================");
 		System.out.println("++Member.isMatchTelNum++");
@@ -109,7 +108,6 @@ public class MemberTest {
 		System.out.println("없는 전화번호라면 = " +temp_memberVO2);
 		System.out.println("\n\n");
 		*/
-		
 		
 		
 		

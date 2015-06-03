@@ -15,10 +15,10 @@
 		(
 			#{memberId},
 			#{memberPw},
+			#{memberAuthority},
 			#{memberAddr},
 			#{memberTelNum},
 			#{memberCompanyNum},
-			#{memberAuthority},
 			#{memberArea},
 			#{memberGender},
 			#{memberBirthYear},

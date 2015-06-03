@@ -3,10 +3,10 @@ package com.costar.main.vo;
 public class MemberVO {
 	String memberId;
 	String memberPw;
+	int memberAuthority;
 	String memberAddr;
 	String memberTelNum;
 	String memberCompanyNum;
-	int memberAuthority;
 	String memberArea;
 	String memberGender;
 	int memberBirthYear;
@@ -102,9 +102,9 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [memberId=" + memberId + ", memberPw=" + memberPw
-				+ ", memberAddr=" + memberAddr + ", memberTelNum="
+				+ ", memberAuthority=" + memberAuthority + ", memberAddr=" + memberAddr + ", memberTelNum="
 				+ memberTelNum + ", memberCompanyNum=" + memberCompanyNum
-				+ ", memberAuthority=" + memberAuthority + ", memberArea="
+				+ ",  memberArea="
 				+ memberArea + ", memberGender=" + memberGender
 				+ ", memberBirthYear=" + memberBirthYear + ", memberAddDate="
 				+ memberAddDate + ", memberUpdateDate=" + memberUpdateDate
